@@ -18,7 +18,7 @@ export default function Home() {
           </p>
 
           <div className="mt-6 flex gap-4">
-            <button className="bg-red-500 hover:bg-red-600 transition px-5 py-2 rounded-lg">
+            <button className="bg-red-500 hover:bg-red-600 transition px-5 py-2 rounded-lg shadow-[0_0_15px_rgba(255,0,0,0.3)]">
               View Work
             </button>
 
@@ -28,12 +28,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right */}
-        <div className="h-64 md:h-96 rounded-xl bg-gradient-to-br from-red-500/20 via-black to-black border border-red-500/20" />
+        {/* Right (replace with image later) */}
+        <div className="h-64 md:h-96 rounded-xl border border-red-500/20 flex items-center justify-center text-gray-500 bg-gradient-to-br from-red-500/10 via-black to-black">
+          Project Preview
+        </div>
 
       </section>
 
-      {/* PROJECTS SECTION */}
+      {/* PROJECTS */}
       <div className="mt-24 max-w-6xl mx-auto">
         <ProjectsSection />
       </div>
