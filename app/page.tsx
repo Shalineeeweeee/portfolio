@@ -34,9 +34,9 @@ export default function Home() {
       </section>
 
       {/* PROJECTS SECTION */}
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">
-        Selected <span className="text-red-500">Projects</span>
-      </h2>
+      <div className="mt-24 max-w-6xl mx-auto">
+        <ProjectsSection />
+      </div>
 
     </div>
   );
