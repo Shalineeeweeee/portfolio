@@ -1,7 +1,10 @@
+import ProjectsSection from "./components/ProjectsSection";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white px-6 py-10">
 
+      {/* HERO */}
       <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
         {/* Left */}
@@ -29,6 +32,11 @@ export default function Home() {
         <div className="h-64 md:h-96 rounded-xl bg-gradient-to-br from-red-500/20 via-black to-black border border-red-500/20" />
 
       </section>
+
+      {/* PROJECTS SECTION */}
+      <h2 className="text-3xl md:text-4xl font-bold mb-10">
+        Selected <span className="text-red-500">Projects</span>
+      </h2>
 
     </div>
   );
