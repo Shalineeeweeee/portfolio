@@ -1,20 +1,22 @@
 import Navbar from "./components/Navbar";
 import ProjectsSection from "./components/ProjectsSection";
+import CursorGlow from "./components/CursorGlow.tsx";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden">
 
-      {/* 🔥 Background Glow */}
-      <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-red-500/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-red-500/10 rounded-full blur-3xl"></div>
+      {/* 🔥 Background gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,0,0,0.15),transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_60%,rgba(255,0,0,0.1),transparent_40%)]" />
 
+      <CursorGlow />
       <Navbar />
 
       <div className="px-6 py-10">
 
         {/* HERO */}
-        <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+        <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative">
 
           {/* LEFT */}
           <div>
@@ -31,52 +33,50 @@ export default function Home() {
 
             {/* BUTTONS */}
             <div className="mt-6 flex gap-4">
-              <button className="bg-red-500 hover:bg-red-600 hover:shadow-[0_0_20px_rgba(255,0,0,0.6)] transition px-5 py-2 rounded-lg">
+              <button className="relative bg-red-500 px-5 py-2 rounded-lg hover:shadow-[0_0_20px_rgba(255,0,0,0.6)] transition">
                 View Work
               </button>
 
-              <button className="border border-gray-600 hover:border-gray-400 transition px-5 py-2 rounded-lg">
+              <button className="border border-gray-600 hover:border-gray-400 px-5 py-2 rounded-lg transition">
                 Contact
               </button>
             </div>
 
-            {/* 🔥 CENTER FILL (chips) */}
+            {/* CHIPS */}
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-gray-300">
-              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">
-                Full Stack
-              </span>
-              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">
-                Next.js
-              </span>
-              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">
-                MongoDB
-              </span>
-              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">
-                UI/UX
-              </span>
+              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">Full Stack</span>
+              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">Next.js</span>
+              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">MongoDB</span>
+              <span className="px-3 py-1 border border-gray-700 rounded-full hover:border-red-500 transition">UI/UX</span>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="h-64 md:h-96 translate-y-6 md:translate-y-10 rounded-xl border border-red-500/20 flex flex-col justify-center items-center text-center bg-gradient-to-br from-red-500/10 via-black to-black hover:border-red-500/50 hover:shadow-[0_0_30px_rgba(255,0,0,0.15)] transition duration-300">
+          {/* RIGHT CARD */}
+          <div className="relative h-64 md:h-96 rounded-2xl p-[1px] bg-gradient-to-br from-red-500/40 via-transparent to-transparent rotate-[2deg]">
 
-            <p className="text-gray-400 text-sm tracking-wide">
-              CURRENTLY BUILDING
-            </p>
+            <div className="h-full w-full rounded-2xl bg-black/80 backdrop-blur-xl border border-white/10 flex flex-col justify-center items-center text-center px-6">
 
-            <h3 className="mt-2 text-2xl font-semibold text-white">
-              Hospital Management System
-            </h3>
+              <p className="text-gray-400 text-xs tracking-widest animate-pulse">
+                ● LIVE PROJECT
+              </p>
 
-            <p className="mt-2 text-gray-500 text-sm px-6">
-              Full-stack dashboard with patients, doctors & appointments
-            </p>
+              <h3 className="mt-2 text-2xl font-semibold">
+                Hospital Management System
+              </h3>
 
+              <p className="mt-2 text-gray-500 text-sm">
+                Full-stack dashboard with patients, doctors & appointments
+              </p>
+
+            </div>
+
+            {/* glow */}
+            <div className="absolute inset-0 rounded-2xl blur-2xl bg-red-500/20 -z-10"></div>
           </div>
 
         </section>
 
-        {/* 🔥 Divider */}
+        {/* Divider */}
         <div className="mt-16 h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
 
         {/* PROJECTS */}
