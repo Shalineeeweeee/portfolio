@@ -6,7 +6,8 @@ import ProjectsSection from "./components/ProjectsSection";
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white px-6 py-10">
-
+      <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-red-500/20 rounded-full blur-3xl"></div>
+<div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-red-500/10 rounded-full blur-3xl"></div>
       <Navbar />
 
       <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
@@ -42,14 +43,19 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-64 md:h-96 rounded-xl border border-red-500/20 overflow-hidden">
-          <img
-            src="/hospital.png"
-            alt="Project preview"
-            className="h-full w-full object-cover"
-          />
-        </div>
+      <div className="h-64 md:h-96 rounded-xl border border-red-500/20 flex flex-col justify-center items-center text-center bg-gradient-to-br from-red-500/10 via-black to-black">
 
+        <p className="text-gray-400 text-sm">Currently Building</p>
+
+          <h3 className="mt-2 text-xl font-semibold text-white">
+            Hospital Management System
+          </h3>
+
+        <p className="mt-2 text-gray-500 text-sm px-6">
+          Full-stack dashboard with patients, doctors & appointments
+        </p>
+
+      </div>
       </section>
 
       <div className="mt-24 max-w-6xl mx-auto">
