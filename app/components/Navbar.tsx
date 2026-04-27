@@ -1,20 +1,28 @@
-export default function Navbar() {
-  return (
-    <nav className="flex justify-between items-center max-w-6xl mx-auto mb-12">
+"use client";
 
-      <h1 className="font-bold text-lg text-white">
-        Shalinee
-      </h1>
+import { useEffect } from "react";
 
-      <div className="flex gap-6 text-sm text-gray-400">
-        <a href="#projects" className="hover:text-white transition">
-          Projects
-        </a>
-        <a href="#" className="hover:text-white transition">
-          Contact
-        </a>
-      </div>
+export default function CursorGlow() {
+  useEffect(() => {
+    const glow = document.createElement("div");
 
-    </nav>
-  );
+    glow.className =
+      "fixed w-40 h-40 bg-red-500/20 blur-3xl rounded-full pointer-events-none z-50";
+
+    document.body.appendChild(glow);
+
+    const move = (e: MouseEvent) => {
+      glow.style.left = e.clientX - 80 + "px";
+      glow.style.top = e.clientY - 80 + "px";
+    };
+
+    window.addEventListener("mousemove", move);
+
+    return () => {
+      window.removeEventListener("mousemove", move);
+      glow.remove();
+    };
+  }, []);
+
+  return null;
 }
