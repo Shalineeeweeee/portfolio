@@ -21,7 +21,7 @@ export default function CursorGlow() {
   return (
     <div
       id="cursor"
-      className="fixed w-6 h-6 rounded-full bg-blue-400/30 blur-md pointer-events-none z-50"
+      className="fixed w-6 h-6 rounded-full bg-yellow-400/30 blur-md pointer-events-none z-50"
     />
   );
 }
