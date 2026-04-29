@@ -24,3 +24,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* smoother feel */
+* {
+  scroll-behavior: smooth;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollba
+r-thumb {
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+}
