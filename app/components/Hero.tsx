@@ -1,49 +1,43 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-  useSpring,
-} from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
-export default function HeroCard() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const smoothX = useSpring(x, { stiffness: 120, damping: 20 });
-  const smoothY = useSpring(y, { stiffness: 120, damping: 20 });
-
-  const rotateX = useTransform(smoothY, [-100, 100], [12, -12]);
-  const rotateY = useTransform(smoothX, [-100, 100], [-12, 12]);
-
-  const handleMouseMove = (e: any) => {
-    const rect = ref.current!.getBoundingClientRect();
-    x.set(e.clientX - rect.left - rect.width / 2);
-    y.set(e.clientY - rect.top - rect.height / 2);
-  };
-
+export default function HeroBlob() {
   return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      style={{ rotateX, rotateY }}
-      className="rounded-2xl border border-white/10 bg-black p-6 shadow-xl"
-    >
-      <h3 className="text-2xl font-semibold">
-        Hospital Management System
-      </h3>
+    <div className="relative w-full h-[400px] flex items-center justify-center">
 
-      <p className="text-gray-400 mt-2">
-        Full-stack dashboard with patients & doctors
-      </p>
+      {/* main blob */}
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          borderRadius: ["40%", "50%", "40%"],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="w-[260px] h-[260px] 
+        bg-yellow-400/20 
+        blur-[80px] rounded-full"
+      />
 
-      <div className="mt-6 h-40 rounded-lg bg-yellow-500/10 flex items-center justify-center">
-        Preview
-      </div>
-    </motion.div>
+      {/* secondary glow */}
+      <motion.div
+        animate={{
+          x: [0, 20, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute w-[180px] h-[180px] 
+        bg-yellow-500/10 
+        blur-[60px] rounded-full"
+      />
+
+    </div>
   );
 }
