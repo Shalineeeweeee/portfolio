@@ -23,13 +23,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body className="min-h-screen overflow-x-hidden">
+      <body className="min-h-screen overflow-x-hidden bg-[#050505] text-white">
 
+        {/* Cursor */}
         <CursorGlow />
 
+        {/* Smooth Scroll Wrapper */}
         <SmoothScroll>
+
+          {/* Navbar */}
           <Navbar />
-          <main>{children}</main>
+
+          {/* Main Content */}
+          <main className="relative">
+            {children}
+          </main>
+
         </SmoothScroll>
 
       </body>
