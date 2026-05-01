@@ -15,29 +15,40 @@ body {
   cursor: none;
 }
 
-/* -------- GRID -------- */
+/* -------- SUBTLE GRID -------- */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: -1;
+
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+
   background-size: 60px 60px;
   pointer-events: none;
 }
 
-/* -------- GLOW -------- */
+/* -------- CONTROLLED GLOW -------- */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: -1;
+
   background: radial-gradient(
     circle at 70% 30%,
-    rgba(var(--accent), 0.18),
-    transparent 50%
+    rgba(var(--accent), 0.12),
+    transparent 60%
   );
+
   pointer-events: none;
+}
+
+/* -------- SCROLL -------- */
+html {
+  scroll-behavior: smooth;
 }
 
 /* -------- SCROLLBAR -------- */
@@ -53,4 +64,11 @@ body::after {
 /* -------- SELECTION -------- */
 ::selection {
   background: rgba(var(--accent), 0.3);
+  color: white;
+}
+
+/* -------- TRANSITIONS -------- */
+button,
+a {
+  transition: all 0.25s ease;
 }
