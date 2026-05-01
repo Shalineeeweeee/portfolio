@@ -4,16 +4,22 @@ import { motion } from "framer-motion";
 
 export default function SectionWrapper({
   children,
+  id,
 }: {
   children: React.ReactNode;
+  id?: string;
 }) {
   return (
-    <section className="px-6 lg:px-12 py-20">
+    <section
+      id={id}
+      className="relative px-6 lg:px-12 py-24 lg:py-32"
+    >
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="max-w-7xl mx-auto"
       >
         {children}
       </motion.div>
