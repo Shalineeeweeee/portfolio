@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function SectionWrapper({
   children,
@@ -9,16 +10,24 @@ export default function SectionWrapper({
   children: React.ReactNode;
   id?: string;
 }) {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 80%", "100% 20%"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [80, 0]);
+
   return (
     <section
+      ref={ref}
       id={id}
       className="relative px-6 lg:px-12 py-24 lg:py-32"
     >
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        style={{ opacity, y }}
         className="max-w-7xl mx-auto"
       >
         {children}
