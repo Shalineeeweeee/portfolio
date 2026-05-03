@@ -1,90 +1,49 @@
 @import "tailwindcss";
 
-/* ---------------- THEME ---------------- */
 :root {
   --bg: #050505;
   --fg: #ffffff;
-  --accent: 255, 215, 0; /* gold */
+  --accent: 255, 215, 0;
 }
 
-/* ---------------- BASE ---------------- */
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
-
-  /* custom cursor */
   cursor: none;
-
-  /* smoother text */
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---------------- SUBTLE GRID ---------------- */
+/* grid */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-
   background-size: 60px 60px;
-  pointer-events: none;
 }
 
-/* ---------------- FOCAL GLOW ---------------- */
+/* glow */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-
   background: radial-gradient(
     circle at 70% 30%,
     rgba(var(--accent), 0.12),
     transparent 60%
   );
-
-  pointer-events: none;
 }
 
-/* ---------------- SCROLL ---------------- */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ---------------- SCROLLBAR ---------------- */
+/* scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgba(var(--accent), 0.4);
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* ---------------- SELECTION ---------------- */
-::selection {
-  background: rgba(var(--accent), 0.3);
-  color: white;
-}
-
-/* ---------------- GLOBAL TRANSITIONS ---------------- */
-button,
-a {
-  transition: all 0.25s ease;
-}
-
-/* ---------------- OPTIONAL: PREVENT IMAGE DRAG ---------------- */
-img {
-  user-select: none;
-  -webkit-user-drag: none;
 }
