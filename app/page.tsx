@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "./components/SectionWrapper";
-import HeroVisual from "./components/HeroVisual";
+import HeroVisual from "./components/Hero";
 import ProjectsSection from "./components/ProjectsSection";
 import Parallax from "./components/Parallax";
 
