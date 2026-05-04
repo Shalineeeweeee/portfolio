@@ -1,49 +1,92 @@
 @import "tailwindcss";
 
+/* ---------------- THEME ---------------- */
 :root {
   --bg: #050505;
   --fg: #ffffff;
-  --accent: 255, 215, 0;
+  --accent: 255, 215, 0; /* gold */
 }
 
+/* ---------------- BASE ---------------- */
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+
+  /* custom cursor */
   cursor: none;
+
+  /* smoother text */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* grid */
+/* ---------------- GRID (VERY SUBTLE) ---------------- */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
+
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+
   background-size: 60px 60px;
+  pointer-events: none;
 }
 
-/* glow */
+/* ---------------- FOCAL GLOW ---------------- */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
+
   background: radial-gradient(
     circle at 70% 30%,
-    rgba(var(--accent), 0.12),
-    transparent 60%
+    rgba(var(--accent), 0.10),
+    transparent 65%
   );
+
+  pointer-events: none;
 }
 
-/* scrollbar */
+/* ---------------- SCROLL ---------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------- SCROLLBAR ---------------- */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--accent), 0.4);
+  background: rgba(var(--accent), 0.35);
   border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------------- SELECTION ---------------- */
+::selection {
+  background: rgba(var(--accent), 0.3);
+  color: white;
+}
+
+/* ---------------- GLOBAL TRANSITIONS ---------------- */
+a,
+button {
+  transition: all 0.25s ease;
+}
+
+/* ---------------- MEDIA FIXES ---------------- */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
 }
