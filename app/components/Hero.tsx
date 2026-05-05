@@ -1,103 +1,57 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-  useSpring,
-} from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [x, y]);
-
-  const sx = useSpring(x, { stiffness: 60, damping: 20 });
-  const sy = useSpring(y, { stiffness: 60, damping: 20 });
-
-  const rotateX = useTransform(sy, [0, window.innerHeight || 1], [8, -8]);
-  const rotateY = useTransform(sx, [0, window.innerWidth || 1], [-8, 8]);
-
   return (
-    <section id="home" className="min-h-[90vh] flex items-center px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+    <section className="min-h-screen flex items-center relative overflow-hidden px-6 lg:px-12">
 
-        {/* LEFT */}
-        <div>
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-7xl font-bold leading-tight tracking-tight"
-          >
-            Hi, I am <span className="text-yellow-400">Shalinee</span>
-          </motion.h1>
+      {/* BIG BACK TEXT */}
+      <h1 className="absolute text-[18vw] font-bold text-white/5 leading-none pointer-events-none select-none">
+        SHALINEE
+      </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-5 text-gray-400 max-w-md"
-          >
-            I design and build modern, responsive web applications with smooth UI and clean UX.
-          </motion.p>
+      <div className="max-w-7xl mx-auto w-full relative z-10">
 
-          <motion.div
-            className="mt-8 flex gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <button className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-medium">
-              View Work
-            </button>
-            <button className="border border-white/20 px-6 py-2 rounded-lg hover:bg-white/5">
-              Contact
-            </button>
-          </motion.div>
+        {/* MAIN TEXT */}
+        <motion.h1
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-5xl md:text-7xl font-bold leading-tight"
+        >
+          Designing <br />
+          <span className="text-yellow-400">modern experiences</span>
+        </motion.h1>
 
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-gray-300">
-            {["Full Stack", "Next.js", "MongoDB", "UI/UX"].map((s) => (
-              <span key={s} className="px-3 py-1 border border-white/10 rounded-full">
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
+        {/* SUBTEXT */}
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mt-6 text-gray-400 max-w-lg text-lg"
+        >
+          I build high-quality web applications with strong focus on interaction, motion, and user experience.
+        </motion.p>
 
-        {/* RIGHT VISUAL */}
-        <div className="relative w-full h-[420px] flex items-center justify-center">
+        {/* BUTTON */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-10"
+        >
+          <button className="group relative px-8 py-3 rounded-full border border-white/20 overflow-hidden">
+            <span className="relative z-10">View Work</span>
 
-          <motion.div
-            style={{ rotateX, rotateY }}
-            className="w-[260px] h-[260px] rounded-[28%]
-            border border-yellow-500/20 bg-yellow-400/5 backdrop-blur-xl"
-          />
-
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[320px] h-[320px] border border-yellow-500/10 rounded-full"
-          />
-
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[180px] h-[180px] border border-yellow-500/20 rounded-xl"
-          />
-
-          <div className="absolute w-[300px] h-[300px] bg-yellow-400/10 blur-[100px] rounded-full" />
-        </div>
+            <div className="absolute inset-0 bg-yellow-400 scale-x-0 group-hover:scale-x-100 origin-left transition duration-300" />
+          </button>
+        </motion.div>
 
       </div>
+
+      {/* SIDE GLOW */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-400/10 blur-[120px] rounded-full" />
+
     </section>
   );
 }
