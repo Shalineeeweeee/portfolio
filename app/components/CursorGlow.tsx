@@ -21,7 +21,8 @@ export default function CursorGlow() {
         transform: `translate(${pos.x - 100}px, ${pos.y - 100}px)`,
         width: 200,
         height: 200,
-        background: "radial-gradient(circle, rgba(255,215,0,0.25), transparent)",
+        background:
+          "radial-gradient(circle, rgba(255,215,0,0.25), transparent 60%)",
         filter: "blur(60px)",
       }}
     />
