@@ -10,7 +10,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={geist.variable}>
-      <body className="bg-[#050505] text-white overflow-x-hidden">
+      <body className="overflow-x-hidden">
 
         <CursorGlow />
 

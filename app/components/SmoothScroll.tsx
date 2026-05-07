@@ -3,16 +3,10 @@
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 
-export default function SmoothScroll({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08,
-      duration: 1.2,
-      smoothWheel: true,
+      lerp: 0.09,
     });
 
     function raf(time: number) {
@@ -21,13 +15,7 @@ export default function SmoothScroll({
     }
 
     requestAnimationFrame(raf);
-
-    // keeps internal state in sync (helps with anchors/edge cases)
-    lenis.on("scroll", () => {});
-
-    return () => {
-      lenis.destroy();
-    };
+    return () => lenis.destroy();
   }, []);
 
   return <>{children}</>;
