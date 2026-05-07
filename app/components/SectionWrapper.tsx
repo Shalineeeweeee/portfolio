@@ -1,25 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export default function SectionWrapper({
-  children,
-  id,
-}: {
-  children: React.ReactNode;
-  id?: string;
-}) {
+export default function CursorGlow() {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      setPos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
+
   return (
-    <section id={id} className="px-6 lg:px-12 py-24 lg:py-32">
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="max-w-7xl mx-auto"
-      >
-        {children}
-      </motion.div>
-    </section>
+    <div
+      className="fixed pointer-events-none z-[9999]"
+      style={{
+        transform: `translate(${pos.x - 80}px, ${pos.y - 80}px)`,
+        width: 160,
+        height: 160,
+        background: "radial-gradient(circle, rgba(var(--accent), 0.25), transparent)",
+        filter: "blur(40px)",
+      }}
+    />
   );
 }
