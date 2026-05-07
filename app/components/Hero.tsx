@@ -4,116 +4,122 @@ import {
   motion,
   useMotionValue,
   useSpring,
-  useTransform,
 } from "framer-motion";
+
 import { useEffect } from "react";
 
 export default function Hero() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // smooth cursor
-  const smoothX = useSpring(x, { stiffness: 60, damping: 20 });
-  const smoothY = useSpring(y, { stiffness: 60, damping: 20 });
+  const smoothX = useSpring(x, {
+    stiffness: 300,
+    damping: 25,
+  });
 
-  // subtle rotation based on cursor
-  const rotateX = useTransform(smoothY, [0, window.innerHeight || 1], [8, -8]);
-  const rotateY = useTransform(smoothX, [0, window.innerWidth || 1], [-8, 8]);
+  const smoothY = useSpring(y, {
+    stiffness: 300,
+    damping: 25,
+  });
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
+      x.set((e.clientX - window.innerWidth / 2) * 0.06);
+      y.set((e.clientY - window.innerHeight / 2) * 0.06);
     };
 
     window.addEventListener("mousemove", move);
+
     return () => window.removeEventListener("mousemove", move);
   }, [x, y]);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative overflow-hidden px-6 lg:px-12"
+      className="min-h-screen flex items-center px-6 lg:px-12 relative overflow-hidden"
     >
-      {/* BIG BACK TEXT */}
-      <h1 className="absolute text-[18vw] font-bold text-white/5 leading-none pointer-events-none select-none">
-        SHALINEE
-      </h1>
 
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        
-        {/* LEFT CONTENT */}
+      {/* background text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <h1 className="text-[18vw] font-bold text-white/[0.03]">
+          SHALINEE
+        </h1>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center relative z-10">
+
+        {/* left */}
         <div>
+
           <motion.h1
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold leading-tight"
+            className="text-6xl md:text-8xl font-bold leading-[0.95]"
           >
-            Designing <br />
-            <span className="text-yellow-400">modern experiences</span>
+            Building <br />
+
+            <span className="text-yellow-400">
+              digital products
+            </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-gray-400 max-w-lg text-lg"
+            className="mt-8 text-lg text-gray-400 max-w-xl"
           >
-            I build high-quality web applications with strong focus on interaction,
-            motion, and user experience.
+            Full-stack developer focused on creating modern,
+            responsive and visually polished web experiences.
           </motion.p>
 
-          {/* BUTTON */}
+          {/* buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mt-10"
+            className="mt-10 flex gap-4"
           >
-            <button className="group relative px-8 py-3 rounded-full border border-white/20 overflow-hidden">
-              <span className="relative z-10">View Work</span>
 
-              {/* hover fill */}
-              <div className="absolute inset-0 bg-yellow-400 scale-x-0 group-hover:scale-x-100 origin-left transition duration-300" />
+            <button className="bg-yellow-400 text-black px-8 py-3 rounded-full font-medium hover:scale-[1.03] transition">
+              View Work
             </button>
+
+            <button className="border border-white/10 px-8 py-3 rounded-full hover:bg-white/5 transition">
+              Contact
+            </button>
+
           </motion.div>
+
         </div>
 
-        {/* RIGHT INTERACTIVE VISUAL */}
-        <div className="relative w-full h-[420px] flex items-center justify-center">
+        {/* right */}
+        <div className="flex items-center justify-center lg:justify-end">
 
-          {/* MAIN SHAPE */}
           <motion.div
             style={{
               x: smoothX,
               y: smoothY,
-              rotateX,
-              rotateY,
             }}
-            className="absolute w-64 h-64 rounded-[30%]
-            bg-gradient-to-br from-yellow-400/20 to-transparent
-            border border-yellow-400/20 backdrop-blur-xl"
-          />
+            className="relative w-[320px] h-[320px]"
+          >
 
-          {/* ROTATING RING */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="w-[300px] h-[300px] rounded-full border border-yellow-400/10"
-          />
+            {/* glow */}
+            <div className="absolute -inset-16 bg-yellow-400/10 blur-[100px] rounded-full" />
 
-          {/* INNER ROTATION */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[180px] h-[180px] border border-yellow-400/20 rounded-xl"
-          />
+            {/* outer */}
+            <div className="absolute inset-0 rounded-[32%] border border-yellow-400/15 bg-yellow-400/5 backdrop-blur-2xl" />
 
-          {/* GLOW */}
-          <div className="absolute w-[350px] h-[350px] bg-yellow-400/10 blur-[120px] rounded-full" />
+            {/* inner */}
+            <div className="absolute inset-10 rounded-[24%] border border-yellow-400/10" />
+
+          </motion.div>
+
         </div>
+
       </div>
+
     </section>
   );
 }
