@@ -13,7 +13,7 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: "Shalinee Portfolio",
-  description: "Modern portfolio built with Next.js",
+  description: "Modern developer portfolio",
 };
 
 export default function RootLayout({

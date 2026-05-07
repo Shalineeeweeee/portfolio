@@ -27,19 +27,8 @@ body::before {
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 70px 70px;
-  z-index: -2;
-}
-
-/* subtle ambient glow */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 70% 30%, rgba(250,204,21,0.08), transparent 35%);
+  background-size: 64px 64px;
   z-index: -1;
-  pointer-events: none;
 }
 
 /* scrollbar */
@@ -48,5 +37,5 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(250,204,21,0.2);
+  background: rgba(255,255,255,0.1);
 }
