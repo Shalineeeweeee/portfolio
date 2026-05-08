@@ -20,15 +20,14 @@ export default function CursorGlow() {
 
   return (
     <div
-      className="fixed pointer-events-none z-[9999]"
+      className="fixed z-[9999] pointer-events-none mix-blend-screen"
       style={{
-        transform: `translate(${pos.x - 40}px, ${pos.y - 40}px)`,
-        width: 80,
-        height: 80,
+        width: 30,
+        height: 30,
         borderRadius: "999px",
-        background:
-          "radial-gradient(circle, rgba(250,204,21,0.12), transparent 70%)",
-        filter: "blur(20px)",
+        background: "#facc15",
+        transform: `translate(${pos.x - 15}px, ${pos.y - 15}px)`,
+        transition: "transform 0.05s linear",
       }}
     />
   );
