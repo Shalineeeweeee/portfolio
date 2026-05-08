@@ -22,13 +22,13 @@ export default function CursorGlow() {
     <div
       className="fixed pointer-events-none z-[9999]"
       style={{
-        transform: `translate(${pos.x - 80}px, ${pos.y - 80}px)`,
-        width: 160,
-        height: 160,
+        transform: `translate(${pos.x - 40}px, ${pos.y - 40}px)`,
+        width: 80,
+        height: 80,
         borderRadius: "999px",
         background:
-          "radial-gradient(circle, rgba(250,204,21,0.18), transparent 70%)",
-        filter: "blur(30px)",
+          "radial-gradient(circle, rgba(250,204,21,0.12), transparent 70%)",
+        filter: "blur(20px)",
       }}
     />
   );
