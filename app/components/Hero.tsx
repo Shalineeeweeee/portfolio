@@ -6,53 +6,42 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center px-6 lg:px-10 pt-32 overflow-hidden"
+      className="min-h-screen flex items-center px-6 lg:px-10 pt-32"
     >
+      <div className="max-w-[1400px] mx-auto w-full">
 
-      {/* AMBIENT LIGHT */}
-      <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[700px] h-[700px] bg-yellow-400/10 blur-[160px] rounded-full" />
+        <div className="grid lg:grid-cols-[1fr_520px] gap-16 items-center">
 
-      <div className="relative max-w-[1600px] mx-auto w-full">
+          {/* LEFT CONTENT */}
+          <div>
 
-        {/* MASSIVE BACKGROUND NAME */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[20vw] font-bold leading-none text-white/[0.03] pointer-events-none select-none">
-
-          SHALINEE
-
-        </div>
-
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-20 items-center">
-
-          {/* LEFT */}
-          <div className="relative z-10">
-
-            {/* small label */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+            {/* label */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="uppercase tracking-[0.3em] text-sm text-gray-500 mb-10"
+              className="uppercase tracking-[0.3em] text-sm text-zinc-500 mb-8"
             >
               Full Stack Developer
-            </motion.div>
+            </motion.p>
 
             {/* heading */}
             <motion.h1
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="font-bold leading-[0.9] tracking-tight"
+              transition={{ duration: 0.7 }}
+              className="font-semibold tracking-tight leading-[0.92]"
             >
 
-              <span className="block text-[clamp(4rem,10vw,9rem)]">
-                Designing
+              <span className="block text-[clamp(4rem,8vw,7rem)]">
+                Building
               </span>
 
-              <span className="block text-yellow-400 text-[clamp(4rem,10vw,9rem)] ml-[10%]">
-                modern
+              <span className="block text-[clamp(4rem,8vw,7rem)] text-yellow-400">
+                digital
               </span>
 
-              <span className="block text-[clamp(4rem,10vw,9rem)]">
-                experiences
+              <span className="block text-[clamp(4rem,8vw,7rem)]">
+                products
               </span>
 
             </motion.h1>
@@ -61,25 +50,27 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-14 max-w-xl text-lg text-gray-400 leading-relaxed"
+              transition={{ delay: 0.2 }}
+              className="mt-10 max-w-xl text-lg leading-relaxed text-zinc-400"
             >
-              I create immersive digital products with strong focus on interaction, motion and premium user experience.
+              Full-stack developer focused on creating modern,
+              scalable and visually polished web applications
+              with clean user experiences.
             </motion.p>
 
             {/* buttons */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-14 flex gap-5"
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap gap-4 mt-12"
             >
 
-              <button className="bg-yellow-400 text-black px-8 py-4 rounded-full font-medium hover:scale-[1.03] transition">
+              <button className="h-14 px-8 rounded-full bg-yellow-400 text-black font-medium hover:scale-[1.02] transition-all duration-300">
                 View Work
               </button>
 
-              <button className="border border-white/10 px-8 py-4 rounded-full hover:bg-white/5 transition">
+              <button className="h-14 px-8 rounded-full border border-white/10 hover:bg-white/5 transition-all duration-300">
                 Contact
               </button>
 
@@ -87,51 +78,66 @@ export default function Hero() {
 
           </div>
 
-          {/* RIGHT */}
+          {/* RIGHT VISUAL */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="relative h-[700px] hidden lg:block"
+            transition={{ duration: 0.7 }}
+            className="relative hidden lg:block"
           >
 
-            {/* main image */}
-            <div className="absolute top-0 right-0 w-[85%] h-[520px] overflow-hidden rounded-[40px]">
+            {/* ambient glow */}
+            <div className="absolute inset-0 bg-yellow-400/10 blur-3xl scale-90 rounded-full" />
 
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-transparent z-10" />
+            {/* browser frame */}
+            <div className="relative rounded-[32px] overflow-hidden border border-white/10 bg-[#0b0b0b] backdrop-blur-xl">
 
-              <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop"
-                alt=""
-                className="w-full h-full object-cover grayscale contrast-125 brightness-75"
-              />
+              {/* top bar */}
+              <div className="h-14 border-b border-white/10 flex items-center gap-3 px-5">
+
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+
+              </div>
+
+              {/* image */}
+              <div className="relative">
+
+                <img
+                  src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop"
+                  alt="workspace"
+                  className="w-full aspect-[4/5] object-cover brightness-75 contrast-125"
+                />
+
+                {/* overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+              </div>
 
             </div>
 
-            {/* floating card */}
-            <div className="absolute bottom-0 left-0 w-[340px] bg-black/80 backdrop-blur-xl border border-white/10 p-8 rounded-[32px]">
+            {/* floating stats card */}
+            <div className="absolute -bottom-8 -left-8 w-72 bg-black/70 backdrop-blur-xl border border-white/10 rounded-[28px] p-6">
 
-              <div className="text-sm uppercase tracking-[0.2em] text-gray-500">
-                Currently
+              <div className="text-xs uppercase tracking-[0.25em] text-zinc-500">
+                Current Focus
               </div>
 
-              <div className="mt-4 text-3xl font-semibold leading-tight">
-                Building scalable web experiences
+              <div className="mt-4 text-2xl font-semibold leading-snug">
+                Designing scalable healthcare dashboards
               </div>
 
-              <div className="mt-8 flex gap-3 flex-wrap text-sm">
+              <div className="mt-6 flex flex-wrap gap-2">
 
-                <span className="border border-white/10 px-3 py-2 rounded-full">
-                  Next.js
-                </span>
-
-                <span className="border border-white/10 px-3 py-2 rounded-full">
-                  Framer Motion
-                </span>
-
-                <span className="border border-white/10 px-3 py-2 rounded-full">
-                  Tailwind
-                </span>
+                {["Next.js", "MongoDB", "Tailwind"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-2 rounded-full border border-white/10 text-sm text-zinc-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
 
               </div>
 
@@ -142,7 +148,6 @@ export default function Hero() {
         </div>
 
       </div>
-
     </section>
   );
 }
